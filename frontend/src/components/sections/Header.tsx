@@ -9,6 +9,7 @@ import SettingsSidebar from "../SettingsSidebar";
 interface HeaderProps {
   showCartIcon?: boolean;
   showUserIcon?: boolean;
+  cartCount: number;
 }
 
 const Header: React.FC<HeaderProps> = ({
