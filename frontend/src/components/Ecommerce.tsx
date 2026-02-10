@@ -7,11 +7,11 @@ import Contact from "./sections/Contact";
 import Footer from "./sections/Footer";
 
 const EmbroideryEcommerce = () => {
-  const [cartCount, setCartCount] = useState(0);
-
   return (
-    <div className="
-    min-h-screen bg-stone-50 dark:bg-stone-900 font-serif">
+    <div
+      className="
+    min-h-screen bg-stone-50 dark:bg-stone-900 font-serif"
+    >
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
         
@@ -72,7 +72,7 @@ const EmbroideryEcommerce = () => {
         }
       `}</style>
 
-      <Header cartCount={cartCount} />
+      <Header />
       <HeroCarousel />
       <FeaturedProducts />
       <About />
