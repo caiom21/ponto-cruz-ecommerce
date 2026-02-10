@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { API_URL } from "../services/api";
 import Header from "../components/sections/Header";
 
 const LoginPage = () => {
@@ -13,7 +14,7 @@ const LoginPage = () => {
     setError("");
 
     try {
-      const response = await fetch("http://localhost:3001/api/users/login", {
+      const response = await fetch(`${API_URL}/api/users/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -1,4 +1,4 @@
-import { API_URL } from '../services/api';
+import { API_URL } from "../services/api";
 import React, {
   createContext,
   useState,
@@ -49,7 +49,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
     setLoading(true);
     try {
-      const response = await fetch("http://localhost:3001/api/cart", {
+      const response = await fetch(`${API_URL}/api/cart`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (!response.ok) throw new Error("Falha ao buscar o carrinho.");
@@ -95,7 +95,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         throw new Error(errorText);
       }
     }
-
 
     // Após qualquer modificação, busca o carrinho atualizado para garantir consistência
     await fetchCart();

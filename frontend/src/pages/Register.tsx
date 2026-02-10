@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { API_URL } from "../services/api";
 import Header from "../components/sections/Header";
 
 const RegisterPage = () => {
@@ -16,7 +17,7 @@ const RegisterPage = () => {
     setSuccess("");
 
     try {
-      const response = await fetch("http://localhost:3001/api/users/register", {
+      const response = await fetch(`${API_URL}/api/users/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
