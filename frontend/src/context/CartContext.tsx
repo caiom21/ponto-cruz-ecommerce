@@ -1,3 +1,4 @@
+import { API_URL } from '../services/api';
 import React, {
   createContext,
   useState,
@@ -95,6 +96,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       }
     }
 
+
     // Após qualquer modificação, busca o carrinho atualizado para garantir consistência
     await fetchCart();
   };
@@ -118,7 +120,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const removeFromCart = async (productId: number) => {
-    await apiRequest(`http://localhost:3001/api/cart/${productId}`, {
+    await apiRequest(`${API_URL}/cart/${productId}`, {
       method: "DELETE",
     });
   };
