@@ -1,36 +1,14 @@
-import { Router } from 'express';
-import db from '../database';
+import express from 'express';
+import { getProducts, getProductById } from '../controllers/productController';
 
-const router = Router();
+const router = express.Router();
 
-// GET todos os produtos
-router.get('/', (req, res) => {
-  db.all('SELECT * FROM products', (err, rows) => {
-    if (err) {
-      res.status(500).json({ error: err.message });
-      return;
-    }
-    res.json(rows);
-  });
-});
+// Rota para obter todos os produtos
+// GET /api/products
+router.get('/', getProducts);
 
-// GET produto por ID
-router.get('/:id', (req, res) => {
-  const { id } = req.params;
-  
-  db.get('SELECT * FROM products WHERE id = ?', [id], (err, row) => {
-    if (err) {
-      res.status(500).json({ error: err.message });
-      return;
-    }
-    
-    if (!row) {
-      res.status(404).json({ error: 'Produto não encontrado' });
-      return;
-    }
-    
-    res.json(row);
-  });
-});
+// Rota para obter um produto específico pelo ID
+// GET /api/products/:id
+router.get('/:id', getProductById);
 
 export default router;

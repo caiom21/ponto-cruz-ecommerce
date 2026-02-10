@@ -1,0 +1,67 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "devCaio",
+      "email": "caiomvasconcelos@gmail.com",
+      "password": "$2a$10$uBBv6dLXs4A8UXNHPGJxUupQer5SdV9EivzKHbEL0BYlNR19G9xtW",
+      "role": "admin",
+      "cart": [
+        {
+          "productId": 1,
+          "quantity": 1
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Pássaro floral",
+      "price": 300,
+      "image": "/pexels-olgakalinina-7705027.jpg",
+      "category": "Decoração",
+      "size": "25cm (diâmetro)"
+    },
+    {
+      "id": 2,
+      "name": "Beija-flor Bordado",
+      "price": 250,
+      "image": "/pexels-olgakalinina-8776176.jpg",
+      "category": "Decoração",
+      "size": "20cm (diâmetro)"
+    },
+    {
+      "id": 3,
+      "name": "Carlos personalizado",
+      "price": 65,
+      "image": "/WhatsApp Image 2026-02-04 at 14.11.35 (1).jpeg",
+      "category": "Personalizado",
+      "size": "16cm (diâmetro)"
+    },
+    {
+      "id": 4,
+      "name": "Toalha natalina personalizado",
+      "price": 125,
+      "image": "/WhatsApp Image 2026-02-04 at 14.11.35 (2).jpeg",
+      "category": "Vestuário",
+      "size": "30cm x 50cm"
+    },
+    {
+      "id": 5,
+      "name": "Arte para a vovó",
+      "price": 125,
+      "image": "/WhatsApp Image 2026-02-04 at 14.11.35 (3).jpeg",
+      "category": "Personalizado",
+      "size": "20cm (diâmetro)"
+    },
+    {
+      "id": 6,
+      "name": "Cuscuz bordado",
+      "price": 50,
+      "image": "/WhatsApp Image 2026-02-04 at 14.11.35.jpeg",
+      "category": "Decoração",
+      "size": "16cm (diâmetro)"
+    }
+  ]
+}

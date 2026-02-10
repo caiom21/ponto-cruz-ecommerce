@@ -14,4 +14,9 @@ export const addToCart = async (productId: number) => {
   return response.json();
 };
 
+export default {
+  fetchProducts,
+  addToCart,
+  // Adicione mais funções conforme necessário
+};
 // Adicione mais funções conforme necessário
