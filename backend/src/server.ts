@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import authRoutes from "../src/routes/authRoutes";
+import authRoutes from "./routes/authRoutes";
 import productRoutes from "./routes/productRoutes";
 import cartRoutes from "./routes/cartRoutes";
 
