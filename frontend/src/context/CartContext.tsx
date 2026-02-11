@@ -101,7 +101,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const addToCart = async (productId: number, quantity: number) => {
-    await apiRequest("http://localhost:3001/api/cart", {
+    await apiRequest(`${API_URL}/api/cart`, {
       method: "POST",
       body: JSON.stringify({ productId, quantity }),
     });
@@ -111,7 +111,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     if (newQuantity === 0) {
       await removeFromCart(productId);
     } else {
-      await apiRequest(`http://localhost:3001/api/cart/${productId}`, {
+      await apiRequest(`${API_URL}/api/cart/${productId}`, {
         method: "PUT",
         body: JSON.stringify({ quantity: newQuantity }),
       });
