@@ -1,3 +1,4 @@
+import { API_URL } from "../services/api";
 import React, {
   createContext,
   useState,
@@ -31,14 +32,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       const token = localStorage.getItem("token");
       if (token) {
         try {
-          const response = await fetch(
-            "http://localhost:3001/api/users/profile",
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
+          const response = await fetch(`${API_URL}/api/users/profile`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
             },
-          );
+          });
 
           if (response.ok) {
             const userData = await response.json();
@@ -63,7 +61,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     password: string,
   ): Promise<boolean> => {
     try {
-      const response = await fetch("http://localhost:3001/login", {
+      // A página de Login já lida com a lógica de requisição e salvamento de token.
+      // Esta função pode ser simplificada ou removida se a lógica estiver centralizada
+      // em outro lugar, mas por enquanto vamos corrigir a URL.
+      const response = await fetch(`${API_URL}/api/users/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -74,7 +75,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       if (response.ok) {
         const data = await response.json();
         setUser(data.user);
-        localStorage.setItem("token", data.token); // Armazena o token
+        localStorage.setItem("token", data.token);
         return true;
       }
       return false;
