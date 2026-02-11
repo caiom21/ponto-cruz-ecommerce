@@ -42,20 +42,30 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   const fetchCart = async () => {
     const token = localStorage.getItem("token");
+    console.log("Fetching cart with token:", token); // Log para depuração
     if (!token) {
       setLoading(false);
-      return; // Não busca o carrinho se não houver token
+      setCartItems([]); // Limpa o carrinho se não houver token
+      return;
     }
 
     setLoading(true);
+    setError(null); // Limpa erros anteriores
     try {
       const response = await fetch(`${API_URL}/api/cart`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      if (!response.ok) throw new Error("Falha ao buscar o carrinho.");
+      console.log("Fetch cart response status:", response.status); // Log do status
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("Failed to fetch cart:", errorText); // Log do erro
+        throw new Error("Falha ao buscar o carrinho.");
+      }
       const data = await response.json();
+      console.log("Cart data fetched:", data); // Log dos dados
       setCartItems(data);
     } catch (err: any) {
+      console.error("Error in fetchCart:", err); // Log da exceção
       setError(err.message);
     } finally {
       setLoading(false);
@@ -63,14 +73,14 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   };
 
   useEffect(() => {
-    // Busca o carrinho quando o provider é montado ou quando um token aparece
     const token = localStorage.getItem("token");
     if (token) {
       fetchCart();
     } else {
+      setCartItems([]);
       setLoading(false);
     }
-  }, []);
+  }, [localStorage.getItem("token")]); // Dependência do token
 
   const apiRequest = async (url: string, options: RequestInit) => {
     const token = localStorage.getItem("token");
@@ -119,7 +129,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const removeFromCart = async (productId: number) => {
-    await apiRequest(`${API_URL}/cart/${productId}`, {
+    await apiRequest(`${API_URL}/api/cart/${productId}`, {
       method: "DELETE",
     });
   };
