@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ProductCard from "../components/ProductCard";
 import Header from "../components/sections/Header";
 import SkeletonProductCard from "../components/SkeletonProductCard";
+import { API_URL } from "../services/api";
 
 interface Product {
   id: number;
@@ -24,7 +25,7 @@ const AllProductsPage = () => {
     const fetchProducts = async () => {
       try {
         setLoading(true);
-        const response = await fetch("http://localhost:3001/api/products");
+        const response = await fetch(`${API_URL}/api/products`);
         if (!response.ok) {
           throw new Error("Falha ao buscar os produtos.");
         }
